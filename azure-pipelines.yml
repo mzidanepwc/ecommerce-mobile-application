@@ -1,0 +1,21 @@
+trigger:
+- main
+
+variables:
+  fortifyApplicationId: 'APP-178'
+  fortifyVersion: '1.0'
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- script: |
+    echo "Fortify Application ID: $(fortifyApplicationId)"
+    echo "Fortify Version: $(fortifyVersion)"
+  displayName: 'Output Variables'
+
+- script: |
+    echo "##vso[task.setvariable variable=fortifyApplicationId;isOutput=true]FortifyApp12345"
+    echo "##vso[task.setvariable variable=fortifyVersion;isOutput=true]1.0"
+  name: SetVariables
+  displayName: 'Set and Output Variables'
